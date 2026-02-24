@@ -5,12 +5,12 @@
              xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence
                                  https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
     <persistence-unit name="vuelosPU" transaction-type="JTA">
-        <!-- IMPORTANTE: Configurar este datasource en tu servidor de aplicaciones
-             apuntando a la BD MySQL 'bd1'. -->
-        <jta-data-source>jdbc/bd1DS</jta-data-source>
-
         <properties>
-            <!-- Opcionales / dependientes del servidor -->
+            <property name="jakarta.persistence.jdbc.url" value="${env.DB_URL}"/>
+            <property name="jakarta.persistence.jdbc.user" value="${env.DB_USER}"/>
+            <property name="jakarta.persistence.jdbc.password" value="${env.DB_PASSWORD}"/>
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            
             <property name="jakarta.persistence.schema-generation.database.action" value="none"/>
         </properties>
     </persistence-unit>
